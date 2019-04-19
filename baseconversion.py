@@ -6,7 +6,6 @@ def convertToB10(inputNum, inputBase):
 
     for i in range(0, numDigits):
         exp = (numDigits-1) - i
-        print(int(inputNum[i])*(inputBase**exp))
         nextDigit = int(inputNum[i]) * (inputBase**exp)
         B10num += nextDigit
 
