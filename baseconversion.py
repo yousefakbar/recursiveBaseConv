@@ -19,7 +19,6 @@ def convertToB10(inputNum, inputBase):
     for i in range(0, numDigits):
         if inputNum[i].isalpha(): 
             coeff = ord(inputNum[i].upper()) - 55
-            print(coeff)
         else:
             coeff = inputNum[i]
         
@@ -28,17 +27,27 @@ def convertToB10(inputNum, inputBase):
         B10num += nextDigit
 
     return str(B10num)
-        
+
+def recursiveConvert(B10num, outputBase):
+    '''recursive function that converts any base 10 number to a specified base'''
+    remainder = B10num % outputBase
+    if remainder >= 10:
+        remainder = chr(55 + remainder)
+
+    if B10num < outputBase:
+        return remainder
+    else:
+        return str(recursiveConvert(int(B10num/outputBase), outputBase)) + str(remainder)
 
 def convert(inputNum, inputBase, outputBase):
     '''validates input number, converts to B10, and to outputBase if need be'''
     validateNum(inputNum)
     B10num = convertToB10(inputNum, inputBase)
 
-    if outputBase == 10:
+    if outputBase == 0:
         return B10num
 
-    return convertTo(inputNum, inputBase, outputBase)
+    return recursiveConvert(int(B10num), outputBase)
 
 def main():
     '''main function'''
