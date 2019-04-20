@@ -1,13 +1,14 @@
 # python recursive base conversion
 
-symbolDict = {
+# A = ord(65) -- Z = 90 -- subtract 55 from all ord() values for DEC
+'''symbolDict = {
     "A": "10",
     "B": "11",
     "C": "12",
     "D": "13",
     "E": "14",
     "F": "15"
-}
+}'''
 
 def validateNum(inputNum):
     #accept if each digit is either:
@@ -28,8 +29,9 @@ def convertToB10(inputNum, inputBase):
     B10num = 0
 
     for i in range(0, numDigits):
-        if inputNum[i].isalpha():
-            coeff = symbolDict[inputNum[i].upper()]
+        if inputNum[i].isalpha(): 
+            coeff = ord(inputNum[i].upper()) - 55
+            print(coeff)
         else:
             coeff = inputNum[i]
         
