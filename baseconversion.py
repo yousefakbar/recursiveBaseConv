@@ -1,30 +1,18 @@
 # python recursive base conversion
 
 # A = ord(65) -- Z = 90 -- subtract 55 from all ord() values for DEC
-'''symbolDict = {
-    "A": "10",
-    "B": "11",
-    "C": "12",
-    "D": "13",
-    "E": "14",
-    "F": "15"
-}'''
 
 def validateNum(inputNum):
-    #accept if each digit is either:
-    #   ~ a number
-    #   ~ a character ie isalpha()
-    #   ~ a decimal point
-    #otherwise reject
-
+    '''validates input number. each digit must be number, letter, or dot'''
     for digit in inputNum:
         if (digit.isdigit()) or (digit.isalpha()) or (digit=="."):
             continue
         else:
             print("Invalid Input. Try Again (Must be letter, digit, or period")
-            exit()        
+            exit()
 
 def convertToB10(inputNum, inputBase):
+    '''converts input number to base 10 using iterative sigma expansion'''
     numDigits = len(inputNum)
     B10num = 0
 
@@ -43,8 +31,8 @@ def convertToB10(inputNum, inputBase):
         
 
 def convert(inputNum, inputBase, outputBase):
+    '''validates input number, converts to B10, and to outputBase if need be'''
     validateNum(inputNum)
-
     B10num = convertToB10(inputNum, inputBase)
 
     if outputBase == 10:
@@ -53,7 +41,7 @@ def convert(inputNum, inputBase, outputBase):
     return convertTo(inputNum, inputBase, outputBase)
 
 def main():
-    #def.
+    '''main function'''
     userNum = input("Input your number (1 digit or longer): ")
     userBase = int(input("What base is your number: "))
     outBase = int(input("What base do you want to convert to: "))
