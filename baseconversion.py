@@ -1,4 +1,4 @@
-# python recursive base conversion
+# python recursive base conversion.
 
 # A = ord(65) -- Z = 90 -- subtract 55 from all ord() values for DEC
 
